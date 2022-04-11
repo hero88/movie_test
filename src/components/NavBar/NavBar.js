@@ -21,16 +21,10 @@ const NavBar = () => {
   const [value, setValue] = useState(0);
   let navigate = useNavigate();
 
-  useEffect(() => {
-    if (value === 0) navigate("/");
-    else if (value === 1) navigate("/trending");
-    else if (value === 2) navigate("/series");
-  }, [value, navigate]);
-
   const handleChange = (e, newValue) => {
     setValue(newValue);
     console.log(newValue);
-  };
+  }
 
   return (
     <>
@@ -57,9 +51,9 @@ const NavBar = () => {
                 value={value}
                 onChange={handleChange}
               >
-                <Tab value={0} icon={<LocalMoviesIcon />} label="Movies" />
-                <Tab value={1} icon={<TrendingUpIcon />} label="Trending" />
-                <Tab value={2} icon={<MovieFilterIcon />} label="TV Series" />
+                <Tab value={0} icon={<LocalMoviesIcon />} label="Movies" onClick={()=> navigate('/')}/>
+                <Tab value={1} icon={<TrendingUpIcon />} label="Trending" onClick={()=> navigate('/treding')}/>
+                <Tab value={2} icon={<MovieFilterIcon />} label="TV Series" onClick={()=> navigate('/series')}/>
               </Tabs>
             )}
             <MenuIcon
